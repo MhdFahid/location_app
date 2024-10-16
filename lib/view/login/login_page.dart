@@ -14,28 +14,6 @@ class LoginPage extends StatelessWidget {
 
   // Unified validation function
   String? validateInput(String? value, String inputType) {
-    if (value == null || value.isEmpty) {
-      Get.snackbar(
-        'Error',
-        'Please enter your $inputType',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-      );
-      return null;
-    }
-
-    if (inputType == 'email' && !GetUtils.isEmail(value)) {
-      Get.snackbar(
-        'Error',
-        'Please enter a valid email',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-      );
-      return null;
-    }
-
     return null;
   }
 

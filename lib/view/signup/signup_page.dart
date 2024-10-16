@@ -73,23 +73,9 @@ class SignupPage extends StatelessWidget {
                 prefixIcon: Icons.email_outlined,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    Get.snackbar(
-                      'Error',
-                      'Please enter your email',
-                      snackPosition: SnackPosition.BOTTOM,
-                      backgroundColor: Colors.red,
-                      colorText: Colors.white,
-                    );
-                    return null; // To stop further validation
+                    return null;
                   }
                   if (!GetUtils.isEmail(value)) {
-                    Get.snackbar(
-                      'Error',
-                      'Please enter a valid email',
-                      snackPosition: SnackPosition.BOTTOM,
-                      backgroundColor: Colors.red,
-                      colorText: Colors.white,
-                    );
                     return null;
                   }
                   return null;
@@ -105,16 +91,9 @@ class SignupPage extends StatelessWidget {
                 prefixIcon: Icons.lock_outlined,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    Get.snackbar(
-                      'Error',
-                      'Please enter your password',
-                      snackPosition: SnackPosition.BOTTOM,
-                      backgroundColor: Colors.red,
-                      colorText: Colors.white,
-                    );
-                    return null; // Prevent further validation
+                    return null;
                   }
-                  return null; // No error
+                  return null;
                 },
               ),
               const SizedBox(height: 30),
