@@ -12,7 +12,7 @@ class LoginPage extends StatelessWidget {
   final AuthController authController = Get.put(AuthController());
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  // Unified validation function
+  
   String? validateInput(String? value, String inputType) {
     return null;
   }

@@ -5,6 +5,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  var user = Rx<User?>(null);
+
+  @override
+  void onInit() {
+    loadUserData();
+    listenToAuthState();
+    super.onInit();
+  }
+
   var isLoading = false.obs;
 
   var isEmailVisible = false.obs;
@@ -67,6 +76,30 @@ class AuthController extends GetxController {
       Get.snackbar('Signup Error', e.toString(),
           snackPosition: SnackPosition.BOTTOM);
     }
+  }
+
+  Future<void> saveUserData(User? user) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('userId', user?.uid ?? '');
+  }
+
+  Future<void> loadUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? userId = prefs.getString('userId');
+    if (userId != null) {
+      user.value = FirebaseAuth.instance.currentUser;
+    }
+  }
+
+  void listenToAuthState() {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      this.user.value = user;
+      if (user == null) {
+        Get.offNamed('/login');
+      } else {
+        Get.offNamed('/home');
+      }
+    });
   }
 
   void logout() async {

@@ -10,7 +10,9 @@ import 'view/signup/signup_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  Get.put(AuthController());
+  final AuthController authController = Get.put(AuthController());
+  authController.loadUserData();
+  authController.listenToAuthState();
   runApp(const MyApp());
 }
 

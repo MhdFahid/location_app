@@ -116,6 +116,7 @@ class HomeScreen extends StatelessWidget {
                 );
               } else {
                 return Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(locationController.locationStatus.value),
                     const SizedBox(height: 20),
