@@ -88,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                                         locationController.longitude.value),
                                   ),
                                   child: const Icon(Icons.location_pin,
-                                      color: Color.fromARGB(255, 113, 105, 182),
+                                      color: Color.fromARGB(255, 115, 0, 0),
                                       size: 40),
                                 ),
                               ],
